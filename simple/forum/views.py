@@ -6,9 +6,9 @@ from forum.forum.models import *
 from forum.shared.utils import *
 from forum.shared.utils import ContainerFormMixin
 
-from forum.mcbv.detail import DetailView
-from forum.mcbv.edit import CreateView, UpdateView
-from forum.mcbv.list_custom import ListView, ListRelated
+from forum.simple.detail import DetailView
+from forum.simple.edit import CreateView, UpdateView
+from forum.simple.list_custom import ListView, ListRelated
 
 from forms import ProfileForm, PostForm
 # Create your views here.
