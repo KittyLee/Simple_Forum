@@ -3,7 +3,7 @@ from django.test.client import Client
 from django.contrib.auth.models import User
 from django.contrib.sites.models import Site
 
-from forum.forum.models import *
+from models import *
 # Create your tests here.
 class SimpleTest(TestCase):
 	def SetUp(self):

@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from forum.forum.models import *
+from models import *
 from forum.shared.utils import ContainerFormMixin
 
 class ProfileForm(ModelForm):

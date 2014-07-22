@@ -87,5 +87,5 @@ FORUM_BASE = '/forum'
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 
 MEDIA_ROOT = 'C:/Server/Projects/simple/static/'
-MEDIA_URL = '/static/'
+MEDIA_URL = '/static/media/'
 ADMIN_MEDIA_PREFIX = '/media/'

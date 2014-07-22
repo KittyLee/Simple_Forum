@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.contrib import admin
 from django.db.models.signals import post_save
-
+from django.db.models import CharField, DateTimeField, ForeignKey, TextField, ImageField, IntegerField, OneToOneField
 from simple.settings import MEDIA_URL
 from forum.shared.utils import *
  # Create your models here.
@@ -71,8 +71,8 @@ class Post(BaseModel):
 
 class UserProfile(BaseModel):
 	avatar = ImageField("Profile Pic", upload_to="images/", blank=True, null=True)
-	posts = IntergerField(default=0)
-	user = OneToOneField(user, related_name="profile")
+	posts = IntegerField(default=0)
+	user = OneToOneField(User, related_name="profile")
 
 	def __unicode__(self):
 		return unicode(self.user)

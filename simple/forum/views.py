@@ -1,14 +1,15 @@
 from django.shortcuts import render
 from PIL import Image as PImage
 
-from forum.settings import MEDIA_URL
-from forum.forum.models import *
+from simple.settings import MEDIA_ROOT
+from models import *
 from forum.shared.utils import *
 from forum.shared.utils import ContainerFormMixin
+from django.forms import ModelForm
 
-from forum.simple.detail import DetailView
-from forum.simple.edit import CreateView, UpdateView
-from forum.simple.list_custom import ListView, ListRelated
+from forum.detail import DetailView
+from edit import CreateView, UpdateView
+from list_custom import ListView, ListRelated
 
 from forms import ProfileForm, PostForm
 # Create your views here.
@@ -19,6 +20,12 @@ class Main(ListView):
 	template_name = "forum/list.html"
 
 class ForumView(ListRelated):
+	detail_model = Forum
+	list_model = Thread
+	related_name = "posts"
+	template_name = "forum.html"
+
+class ThreadView(ListRelated):
 	detail_model = Forum
 	list_model = Thread
 	related_name = "posts"
@@ -84,7 +91,7 @@ class Reply(NewTopic):
 		return self.get_detail_object().get_absolute_url() + "?page=last"
 
 
-class PostForm(ContainerFormMixin, ModelForm):
+class PostForm(ContainerFormMixin, forms.Form):
 	class Meta:
 		model = PostFormexclude = ["creator", "thread"]
 
