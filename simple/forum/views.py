@@ -1,6 +1,8 @@
 from django.shortcuts import render
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
 from PIL import Image as PImage
-
+from django.contrib.auth.models import User
 from simple.settings import MEDIA_ROOT
 from models import *
 from forum.shared.utils import *
@@ -13,6 +15,19 @@ from list_custom import ListView, ListRelated
 
 from forms import ProfileForm, PostForm
 # Create your views here.
+
+#Login page
+def login(request):
+	username=request.POST['username']
+	password=request.POST['password']
+	user=authenticate(username=username,password=password)
+	if user is not None:
+		if user.is_active:
+			login(request,user)
+
+#Logout page
+def logout(request):
+	logout(request)
 
 
 class Main(ListView):
